@@ -1,9 +1,17 @@
-<div id="toggle">
+<!-- <div id="toggle">
   <button id="mapBtn">Map</button><button id="listBtn">List</button>
 </div>
 <div id="map"></div>
 <div id="list">
   <ul></ul>
-</div>
+</div> -->
+
+<main>
+  @if(data.stations) { @for(station of data.stations; track station) {
+  <div>
+    {{ station }}
+  </div>
+  } }
+</main>
 
 <router-outlet></router-outlet>

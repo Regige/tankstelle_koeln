@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,16 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'tankstelle_koeln';
+
+  constructor(public data: DataService) {}
+
+  ngOnInit() {
+    this.data.fetchDataJson();
+  }
+
+
+
+
 
   //  $(document).ready(function () {
   //       var map = document.getElementById("map"),
