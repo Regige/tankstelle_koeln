@@ -1,17 +1,18 @@
-<!-- <div id="toggle">
-  <button id="mapBtn">Map</button><button id="listBtn">List</button>
-</div>
-<div id="map"></div>
-<div id="list">
-  <ul></ul>
-</div> -->
-
 <main>
-  @if(data.stations) { @for(station of data.stations; track station) {
-  <div>
-    {{ station }}
-  </div>
+  <h1>Tankstellen Köln</h1>
+  @if(data.stations) { @for(station of data.stations; track station.id) {
+  <a
+    [href]="
+      'https://www.google.com/maps?q=' +
+      station.latitude +
+      ',' +
+      station.longitude
+    "
+    target="_blank"
+  >
+    {{ station.street }}
+  </a>
   } }
 </main>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
