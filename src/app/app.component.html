@@ -1,10 +1,16 @@
+<!-- Header -->
 <header><h1>Tankstellen Köln</h1></header>
 
+<!-- Navbar -->
 <nav>
   <div class="nav-head">
     <div>
-      <Button>Straßen</Button>
-      <Button>Stadtteile</Button>
+      <Button (click)="showStreet = true; backToAllStations('street')"
+        >Straßen</Button
+      >
+      <Button (click)="showStreet = false; backToAllStations('district')"
+        >Stadtteile</Button
+      >
     </div>
     <div>
       <input type="text" />
@@ -12,15 +18,42 @@
   </div>
 
   <div class="filter-btn-con">
-    <button (click)="data.sortStations(data.stations, 'street', true)">
+    @for(letter of letters; track letter) {
+    <button
+      class="letter-btn"
+      (click)="
+        data.filterStationsByLetter(letter, showStreet ? 'street' : 'district')
+      "
+    >
+      {{ letter }}
+    </button>
+    }
+    <button
+      (click)="
+        data.sortStations(
+          data.stations,
+          showStreet ? 'street' : 'district',
+          true
+        )
+      "
+    >
       Aufsteigend
     </button>
-    <button (click)="data.sortStations(data.stations, 'street', false)">
+    <button
+      (click)="
+        data.sortStations(
+          data.stations,
+          showStreet ? 'street' : 'district',
+          false
+        )
+      "
+    >
       Absteigend
     </button>
   </div>
 </nav>
 
+<!-- Content Cards -->
 <main>
   @if(data.stations) { @for(station of data.stations; track station.id) {
   <app-card [station]="station"></app-card>

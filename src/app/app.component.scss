@@ -3,6 +3,7 @@ header {
 
     h1 {
         background-color: #2F6A9A;
+        box-sizing: border-box;
         color: white;
         padding: 32px 96px;
         margin: 0;
@@ -14,7 +15,9 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: start;
-
+    gap: 16px;
+    margin: 32px 96px;
+    
     .nav-head {
         display: flex;
         align-items: center;
@@ -23,9 +26,8 @@ nav {
         box-sizing: border-box;
         border-radius: 10px;
         color: white;
-        width: calc(100vw - 192px);
-        margin: 32px 96px;
         padding: 16px;
+        width: calc(100vw - 192px);
 
         button {
             background: white;
@@ -41,7 +43,7 @@ nav {
     }
 
     .filter-btn-con {
-
+        width: calc(100vw - 192px);
     }
 }
 

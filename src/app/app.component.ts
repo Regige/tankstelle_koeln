@@ -14,12 +14,20 @@ import { CardComponent } from './card/card.component';
 export class AppComponent {
   title = 'tankstelle_koeln';
 
+  showStreet = true;
+  letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
   constructor(public data: DataService) {}
 
   ngOnInit() {
     this.data.fetchDataJson();
   }
 
+
+  backToAllStations(attribute: 'street' | 'district') {
+    this.data.stations = this.data.stationsAll;
+    this.data.sortStations(this.data.stations, attribute, true)
+  }
 
 
 
