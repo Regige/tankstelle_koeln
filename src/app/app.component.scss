@@ -1,0 +1,55 @@
+header {
+    width: 100vw;
+
+    h1 {
+        background-color: #2F6A9A;
+        color: white;
+        padding: 32px 96px;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    .nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #1D405C;
+        box-sizing: border-box;
+        border-radius: 10px;
+        color: white;
+        width: calc(100vw - 192px);
+        margin: 32px 96px;
+        padding: 16px;
+
+        button {
+            background: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            width: auto;
+
+            &:hover {
+                background: rgb(229, 228, 228);
+            }
+        }
+    }
+
+    .filter-btn-con {
+
+    }
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 32px 96px;
+    
+}

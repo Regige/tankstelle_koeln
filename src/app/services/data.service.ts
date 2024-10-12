@@ -17,8 +17,8 @@ export class DataService {
   async fetchDataJson() {
     let response = await fetch(this.url);
     let responseAsJson = await response.json();
-
-    this.stations = this.transformObjects(responseAsJson.features);
+    let stationsObjects = this.transformObjects(responseAsJson.features);
+    this.stations = this.sortStations(stationsObjects);
 
     console.log(this.stations);
   }
@@ -44,5 +44,14 @@ export class DataService {
             longitude: longitude.toString()
         };
     });
-}
+  }
+
+
+  sortStations(stations: Station[], attribute: 'street' | 'district' = 'street', ascending: boolean = true): Station[] {
+    return stations.sort((a, b) =>
+      ascending ? a[attribute].localeCompare(b[attribute]) : b[attribute].localeCompare(a[attribute])
+    );
+  }
+
+
 }

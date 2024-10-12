@@ -1,31 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
 
-          html,
-          body,
-          #map,
-          #list {
-              height: 100%;
-              width: 100%;
-              margin: 0;
-              padding: 0;
-              border: 0;
-          }
+body {
+    margin: 0;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+
+app-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+    background-color: #F5F5F7;
+    border-radius: 10px;
+    // border: 5px solid #2F6A9A;
+    box-sizing: border-box;
+    padding: 16px;
+    width: calc(20% - 10px);
+
+    &:hover {
+        // border: 5px solid #1D405C;
+        background-color: #ebebef;
+    }
+}
+
+
+        //   html,
+        //   body,
+        //   #map,
+        //   #list {
+        //       height: 100%;
+        //       width: 100%;
+        //       margin: 0;
+        //       padding: 0;
+        //       border: 0;
+        //   }
     
-          #map,
-          #list {
-              height: 90%;
-          }
+        //   #map,
+        //   #list {
+        //       height: 90%;
+        //   }
     
-          #toggle {
-              height: 10%;
-          }
+        //   #toggle {
+        //       height: 10%;
+        //   }
     
-          #mapBtn,
-          #listBtn {
-              margin: 0;
-              box-sizing: border-box;
-              height: 100%;
-              width: 50%;
-              border: 0;
-              outline: 0;
-          }
+        //   #mapBtn,
+        //   #listBtn {
+        //       margin: 0;
+        //       box-sizing: border-box;
+        //       height: 100%;
+        //       width: 50%;
+        //       border: 0;
+        //       outline: 0;
+        //   }
