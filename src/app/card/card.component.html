@@ -1,13 +1,22 @@
-<h4>{{ station.street }}</h4>
-<h4>{{ station.district }}</h4>
-<a
-  [href]="
-    'https://www.google.com/maps?q=' +
-    station.latitude +
-    ',' +
-    station.longitude
-  "
-  target="_blank"
->
-  Maps
-</a>
+<div class="card-text">
+  @if(showStreet) {
+  <h4>{{ station.street }}</h4>
+  <h5>{{ station.district }}</h5>
+  } @else {
+  <h4>{{ station.district }}</h4>
+  <h5>{{ station.street }}</h5>
+  }
+</div>
+<div class="map-icon-con">
+  <a
+    class="map-icon"
+    [href]="
+      'https://www.google.com/maps?q=' +
+      station.latitude +
+      ',' +
+      station.longitude
+    "
+    target="_blank"
+  >
+  </a>
+</div>

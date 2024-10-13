@@ -17,6 +17,7 @@ export class CardComponent {
     district: '',
     latitude: '',
     longitude: '',
-  }
+  };
+  @Input() showStreet: boolean = true;
 
 }

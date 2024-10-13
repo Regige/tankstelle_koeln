@@ -16,7 +16,9 @@ nav {
     flex-direction: column;
     align-items: start;
     gap: 16px;
-    margin: 32px 96px;
+    box-sizing: border-box;
+    padding: 32px 96px;
+    width: 100vw;
     
     .nav-head {
         display: flex;
@@ -44,6 +46,12 @@ nav {
 
     .filter-btn-con {
         width: calc(100vw - 192px);
+
+        button {
+            background-color: #d6d6d9;
+            color: white;
+            border: none;
+        }
     }
 }
 
@@ -51,7 +59,15 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-
-    margin: 32px 96px;
+    box-sizing: border-box;
+    padding: 32px 96px;
+    width: 100vw;
     
+}
+
+
+.highlight {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
 }

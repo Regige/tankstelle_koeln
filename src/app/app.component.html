@@ -5,15 +5,18 @@
 <nav>
   <div class="nav-head">
     <div>
-      <Button (click)="showStreet = true; backToAllStations('street')"
-        >Straßen</Button
-      >
-      <Button (click)="showStreet = false; backToAllStations('district')"
-        >Stadtteile</Button
+      <Button (click)="showStreet = true; backToAllStations()"
+        >Alle Tankstellen</Button
       >
     </div>
     <div>
-      <input type="text" />
+      <input
+        type="text"
+        placeholder="Suche nach Straße oder Stadtteil"
+        [(ngModel)]="searchText"
+        (keyup)="onSearch()"
+      />
+      <input type="button" value="" (click)="onSearch()" />
     </div>
   </div>
 
@@ -21,30 +24,59 @@
     @for(letter of letters; track letter) {
     <button
       class="letter-btn"
+      [ngClass]="{ highlight: selectedLetter === letter }"
       (click)="
-        data.filterStationsByLetter(letter, showStreet ? 'street' : 'district')
+        selectLetter(letter);
+        data.filterStationsByLetter(
+          letter,
+          showStreet ? 'street' : 'district',
+          ascending,
+          searchText
+        )
       "
     >
       {{ letter }}
     </button>
     }
     <button
+      [ngClass]="{ highlight: showStreet }"
       (click)="
+        showStreet = true;
+        data.sortStations(this.data.stations, 'street', ascending)
+      "
+    >
+      Straßen
+    </button>
+    <button
+      [ngClass]="{ highlight: !showStreet }"
+      (click)="
+        showStreet = false;
+        data.sortStations(this.data.stations, 'district', ascending)
+      "
+    >
+      Stadtteile
+    </button>
+    <button
+      [ngClass]="{ highlight: ascending }"
+      (click)="
+        ascending = true;
         data.sortStations(
           data.stations,
           showStreet ? 'street' : 'district',
-          true
+          ascending
         )
       "
     >
       Aufsteigend
     </button>
     <button
+      [ngClass]="{ highlight: !ascending }"
       (click)="
+        ascending = false;
         data.sortStations(
           data.stations,
           showStreet ? 'street' : 'district',
-          false
+          ascending
         )
       "
     >
@@ -56,9 +88,9 @@
 <!-- Content Cards -->
 <main>
   @if(data.stations) { @for(station of data.stations; track station.id) {
-  <app-card [station]="station"></app-card>
+  <app-card [station]="station" [showStreet]="showStreet"></app-card>
   } } @else {
-  <p>Something went wrong. Try again later!</p>
+  <p>Keine Tankstellen gefunden.</p>
   }
 </main>
 

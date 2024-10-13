@@ -1,4 +1,41 @@
-h4 {
-    color: #3E4242;
-    margin: 0;
+.card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    h4, h5 {
+        color: #3E4242;
+        margin: 0;
+    }
+
+    h5 {
+        color: #686b6b;
+    }
+}
+
+
+
+.map-icon-con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+
+    .map-icon {
+        background-color: #d6d6d9;
+        background-image: url(./../../assets/icons/map.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 75%;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    
+        &:hover {
+            height: 43px;
+            width: 43px;
+        }
+    }
 }

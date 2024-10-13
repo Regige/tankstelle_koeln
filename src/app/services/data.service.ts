@@ -10,6 +10,7 @@ export class DataService {
 
   stationsAll: Station[] = [];
   stations: Station[] = [];
+  searchedStations: Station[] = [];
 
 
   constructor() { }
@@ -56,13 +57,42 @@ export class DataService {
   }
 
 
-  filterStationsByLetter(letter: string, attribute: 'street' | 'district' = 'street') {
+  filterStationsByLetter(letter: string, attribute: 'street' | 'district' = 'street', ascending : boolean, searchText : string) {
+    if(this.searchedStations.length >= 1 || searchText.trim() !== '') {
+      console.log("SearchedStation", this.searchedStations);
+      this.stations = this.sortStations(this.searchedStations, attribute, ascending);
+    } else {
+      this.stations = this.sortStations(this.stationsAll, attribute, ascending);
+    }
+
     let filteredStations = this.stations.filter(station => 
       station[attribute].toLowerCase().startsWith(letter.toLowerCase())
     );
     this.stations = filteredStations;
     console.log("Gefilterte Stationen:", filteredStations);
   }
+
+
+  searchStations(searchTerm: string, attribute: 'street' | 'district', ascending : boolean) {
+  if (searchTerm.trim() === '') {
+    this.stations = this.sortStations(this.stationsAll, attribute, ascending);
+    this.searchedStations = [];
+  } else {
+    // In einer Schleife nach Straße und Stadtteil filtern
+    let uniqueResults = this.stationsAll.filter(station => {
+      const streetMatches = station['street'].toLowerCase().includes(searchTerm.toLowerCase().trim());
+      const districtMatches = station['district'].toLowerCase().includes(searchTerm.toLowerCase().trim());
+      
+      // Wenn entweder die Straße oder der Stadtteil übereinstimmt, behalten wir die Station
+      return streetMatches || districtMatches;
+    });
+
+    this.searchedStations = uniqueResults;
+    this.stations = this.searchedStations;
+  }
+
+  console.log('Stationen nach Suchtext (Straßen und Stadtteile):', this.stations);
+}
 
 
 }
