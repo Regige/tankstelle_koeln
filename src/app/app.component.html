@@ -4,84 +4,89 @@
 <!-- Navbar -->
 <nav>
   <div class="nav-head">
-    <div>
-      <Button (click)="showStreet = true; backToAllStations()"
-        >Alle Tankstellen</Button
-      >
-    </div>
+    <Button
+      class="show-all-btn"
+      (click)="showStreet = true; backToAllStations()"
+      >Alle Tankstellen</Button
+    >
     <div>
       <input
+        class="input-search"
         type="text"
         placeholder="Suche nach Straße oder Stadtteil"
         [(ngModel)]="searchText"
         (keyup)="onSearch()"
       />
-      <input type="button" value="" (click)="onSearch()" />
+      <input class="input-btn" type="button" value="" (click)="onSearch()" />
     </div>
   </div>
 
   <div class="filter-btn-con">
-    @for(letter of letters; track letter) {
-    <button
-      class="letter-btn"
-      [ngClass]="{ highlight: selectedLetter === letter }"
-      (click)="
-        selectLetter(letter);
-        data.filterStationsByLetter(
-          letter,
-          showStreet ? 'street' : 'district',
-          ascending,
-          searchText
-        )
-      "
-    >
-      {{ letter }}
-    </button>
-    }
-    <button
-      [ngClass]="{ highlight: showStreet }"
-      (click)="
-        showStreet = true;
-        data.sortStations(this.data.stations, 'street', ascending)
-      "
-    >
-      Straßen
-    </button>
-    <button
-      [ngClass]="{ highlight: !showStreet }"
-      (click)="
-        showStreet = false;
-        data.sortStations(this.data.stations, 'district', ascending)
-      "
-    >
-      Stadtteile
-    </button>
-    <button
-      [ngClass]="{ highlight: ascending }"
-      (click)="
-        ascending = true;
-        data.sortStations(
-          data.stations,
-          showStreet ? 'street' : 'district',
-          ascending
-        )
-      "
-    >
-      Aufsteigend
-    </button>
-    <button
-      [ngClass]="{ highlight: !ascending }"
-      (click)="
-        ascending = false;
-        data.sortStations(
-          data.stations,
-          showStreet ? 'street' : 'district',
-          ascending
-        )
-      "
-    >
-      Absteigend
-    </button>
+    <div class="filter-btn-left">
+      @for(letter of letters; track letter) {
+      <button
+        class="letter-btn"
+        [ngClass]="{ highlight: selectedLetter === letter }"
+        (click)="
+          selectLetter(letter);
+          data.filterStationsByLetter(
+            letter,
+            showStreet ? 'street' : 'district',
+            ascending,
+            searchText
+          )
+        "
+      >
+        {{ letter }}
+      </button>
+      }
+    </div>
+    <div class="filter-btn-right">
+      <button
+        class="attribute-btn"
+        [ngClass]="{ highlight: showStreet }"
+        (click)="
+          showStreet = true;
+          data.sortStations(this.data.stations, 'street', ascending)
+        "
+      >
+        Straßen
+      </button>
+      <button
+        class="attribute-btn"
+        [ngClass]="{ highlight: !showStreet }"
+        (click)="
+          showStreet = false;
+          data.sortStations(this.data.stations, 'district', ascending)
+        "
+      >
+        Stadtteile
+      </button>
+      <button
+        class="asc-true"
+        [ngClass]="{ highlight: ascending }"
+        (click)="
+          ascending = true;
+          data.sortStations(
+            data.stations,
+            showStreet ? 'street' : 'district',
+            ascending
+          )
+        "
+      ></button>
+      <button
+        class="asc-false"
+        [ngClass]="{ highlight: !ascending }"
+        (click)="
+          ascending = false;
+          data.sortStations(
+            data.stations,
+            showStreet ? 'street' : 'district',
+            ascending
+          )
+        "
+      ></button>
+    </div>
   </div>
 </nav>
 

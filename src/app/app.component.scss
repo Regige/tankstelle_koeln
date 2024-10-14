@@ -30,27 +30,107 @@ nav {
         color: white;
         padding: 16px;
         width: calc(100vw - 192px);
-
-        button {
-            background: white;
+        
+        .show-all-btn {
+            background-color: #2F6A9A;
             border: none;
-            padding: 12px;
             border-radius: 10px;
-            width: auto;
+            color: white;
+            font-weight: 700;
+            padding: 12px;
+            width: 160px;
+            
+            &:hover {
+                background: #3e75a2;
+            }
+        }
+
+        .input-search {
+            height: 26px;
+            border: none;
+            width: 216px;
+            border-radius: 10px;
+            padding: 8px 12px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        .input-btn {
+            background-color: #2F6A9A;
+            background-image: url(./../assets/icons/search.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 80%;
+            border: none;
+            border-radius: 10px;
+            margin-left: 9px;
+            height: 42px;
+            width: 42px;
 
             &:hover {
-                background: rgb(229, 228, 228);
+                background: #3e75a2;
+                background-image: url(./../assets/icons/search.svg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 80%;
             }
         }
     }
 
     .filter-btn-con {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         width: calc(100vw - 192px);
 
         button {
             background-color: #d6d6d9;
             color: white;
             border: none;
+
+            &:hover {
+                background-color: #b4b4b5;
+            }
+        }
+
+        .filter-btn-left {
+            display: flex;
+            justify-content: space-between;
+
+            .letter-btn {
+                border-radius: 8px;
+                height: 30px;
+                width: 30px;
+            }
+        }
+
+        .filter-btn-right {
+            display: flex;
+            justify-content: end;
+            gap: 8px;
+
+            .attribute-btn {
+                border-radius: 50px;
+                height: 30px;
+                width: 88px;
+            }
+
+            .asc-true, .asc-false {
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 50%;
+                height: 30px;
+                width: 30px;
+            }
+            
+            .asc-true {
+                background-image: url(./../assets/icons/arrow_up.svg);
+
+            }
+            .asc-false {
+                background-image: url(./../assets/icons/arrow_down.svg);      
+            }
         }
     }
 }
@@ -60,14 +140,13 @@ main {
     flex-wrap: wrap;
     gap: 10px;
     box-sizing: border-box;
-    padding: 32px 96px;
+    padding: 0px 96px 32px 96px;
     width: 100vw;
     
 }
 
 
 .highlight {
-    background-color: #007bff;
-    color: white;
+    background-color: #b4b4b5 !important;
     font-weight: bold;
 }
