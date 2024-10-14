@@ -31,10 +31,27 @@ app-card {
 
     box-sizing: border-box;
     padding: 16px;
-    width: calc(20% - 10px);
+    width: calc(20% - 8px);
 
     &:hover {
         background-color: #ebebef;
+    }
+
+    @media (max-width: 1024px) {
+        width: calc(25% - 7.5px);
+    }
+    
+    @media (max-width: 768px) {
+        width: calc(33.33% - 6.66px);
+    }
+    
+    @media (max-width: 576px) {
+        gap: 8px;
+        width: calc(50% - 5px);
+    }
+
+    @media (max-width: 412px) {
+        width: 100%;
     }
 }
 
