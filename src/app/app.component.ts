@@ -22,13 +22,21 @@ export class AppComponent {
   searchText: string = '';
   selectedLetter: string | null = null;
 
+
   constructor(public data: DataService) {}
 
+
+  /**
+   * Starts fetchDataJson() function and get's data from external API
+   */
   ngOnInit() {
     this.data.fetchDataJson();
   }
 
 
+  /**
+   * Sets variables all back to default values
+   */
   backToAllStations() {
     this.data.stations = this.data.sortStations(this.data.stationsAll, this.showStreet ? 'street' : 'district', this.ascending);
     this.data.searchedStations = [];
@@ -37,12 +45,20 @@ export class AppComponent {
   }
 
 
+  /**
+   * Starts searchStations function with set parameters
+   */
   onSearch() {
     this.data.searchStations(this.searchText, this.showStreet ? 'street' : 'district', this.ascending);
     this.selectedLetter = null;
   }
 
 
+  /**
+   * Sets variable selectedLetter
+   * 
+   * @param letter - selected letter
+   */
   selectLetter(letter: string) {
     this.selectedLetter = letter;
   }
