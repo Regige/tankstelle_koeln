@@ -92,9 +92,17 @@
 
 <!-- Content Cards -->
 <main>
-  @if(data.stations) { @for(station of data.stations; track station.id) {
+  @if(dataError === true) {
+  <div class="card">
+    <span style="width: 100%">Daten konnten nicht geladen werden!</span>
+  </div>
+  } @else { @if(data.stations.length >= 1) { @for(station of data.stations;
+  track station.id) {
   <app-card [station]="station" [showStreet]="showStreet"></app-card>
   } } @else {
-  <p>Keine Tankstellen gefunden.</p>
-  }
+  <div class="card">
+    <span style="width: 100%">Keine Tankstelle gefunden</span>
+  </div>
+
+  } }
 </main>

@@ -21,6 +21,7 @@ export class AppComponent {
   letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   searchText: string = '';
   selectedLetter: string | null = null;
+  dataError = false;
 
 
   constructor(public data: DataService) {}
@@ -29,8 +30,13 @@ export class AppComponent {
   /**
    * Starts fetchDataJson() function and get's data from external API
    */
-  ngOnInit() {
-    this.data.fetchDataJson();
+  async ngOnInit() {
+    try{
+      await this.data.fetchDataJson();
+    } catch(error) {
+      console.log("Data could not be fetched");
+      this.dataError = true;
+    }
   }
 
 

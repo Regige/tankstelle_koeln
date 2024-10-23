@@ -20,7 +20,7 @@ app-root {
 }
 
 
-app-card {
+app-card, .card {
     display: flex;
     flex-direction: column;
     gap: 16px;
